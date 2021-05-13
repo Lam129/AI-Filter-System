@@ -2,6 +2,7 @@ from pymongo import MongoClient
 from lib import connect
 from openpyxl import load_workbook
 import time
+import ssl
 
 start = time.time()
 # Connect to excel
@@ -33,7 +34,7 @@ for i in range(ws.max_row):
         continue
 
 # Connect to database
-client = MongoClient(connect(), 27017)
+client = MongoClient(connect(), 27017,ssl_cert_reqs=ssl.CERT_NONE)
 db_in = client['FYP_result']
 col_in = db_in['FYP_2021_Comment_list']
 db_out = client['FYP_result']
