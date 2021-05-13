@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from lib import connect, find_key
+import ssl
 
 # Create empty string to store text
 strs_functionality = ""
@@ -7,7 +8,7 @@ strs_body = ""
 strs_other = ""
 
 # Connect to database
-client = MongoClient(connect(), 27017)
+client = MongoClient(connect(), 27017,ssl_cert_reqs=ssl.CERT_NONE)
 db_out = client['FYP_result']
 col_out_functionality = db_out['FYP_2021_result_functionality']
 col_out_body = db_out['FYP_2021_result_body']
